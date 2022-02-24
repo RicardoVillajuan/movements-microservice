@@ -9,6 +9,7 @@ spring:
       username: nttdata
       password: nttd4t4
 
-
+  jackson: 
+    date-format: yyyy-MM-dd
 
 spring.data.mongodb.uri: mongodb+srv://admin:123@cluster0.xjk1b.mongodb.net/bootcamp2

@@ -1,5 +1,7 @@
 package com.bank.servicedb;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Service;
 import com.bank.entity.Movement;
 import com.bank.repository.MovementRepository;
@@ -24,5 +26,16 @@ public class MovementServicedb implements IMovementService{
 	public Flux<Movement> findByAll() {
 		// TODO Auto-generated method stub
 		return repoMovement.findAll();
+	}
+
+	@Override
+	public Flux<Movement> findByStarDateAndEndDate(Date startdate, Date enddate,String idproduct) {
+		// TODO Auto-generated method stub
+		return repoMovement.findByDateBetween(startdate, enddate)
+				.filter(e->{
+					return e.getIdproduct().equals(idproduct);
+				}).map(e->{
+					return e;
+				});
 	}
 }
